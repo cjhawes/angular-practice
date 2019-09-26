@@ -19,14 +19,15 @@ export class ProductsComponent implements OnInit {
       imageUrl: 'assets/images/bin.png'
     },
     {
-    productId: 2,
-    productsName: 'Twig',
-    productCode: 'TWIG01',
-    releaseDate: '21-01-2019',
-    description: 'Big ol\' twig.',
-    price: 20.99,
-    starRating: 3.2,
-    imageUrl: 'assets/images/twig.png'}
+      productId: 2,
+      productsName: 'Twig',
+      productCode: 'TWIG01',
+      releaseDate: '21-01-2019',
+      description: 'Big ol\' twig.',
+      price: 20.99,
+      starRating: 3.2,
+      imageUrl: 'assets/images/twig.png'
+    }
   ];
 
 
