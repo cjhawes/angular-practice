@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from './product';
 
 @Component({
   selector: 'app-products',
@@ -12,10 +13,10 @@ export class ProductsComponent implements OnInit {
   showImage = false;
   listFilter = 'twig';
 
-  products: any[] = [
+  products: IProduct[] = [
     {
       productId: 1,
-      productsName: 'Bin',
+      productName: 'Bin',
       productCode: 'BIN01',
       releaseDate: '21-01-2019',
       description: 'Big ol\' barrel of nothing ready to be filled with the crap you dont want anymore.',
@@ -25,7 +26,7 @@ export class ProductsComponent implements OnInit {
     },
     {
       productId: 2,
-      productsName: 'Twig',
+      productName: 'Twig',
       productCode: 'TWIG01',
       releaseDate: '21-01-2019',
       description: 'Big ol\' twig.',
