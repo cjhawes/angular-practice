@@ -8,6 +8,7 @@ import { ProductsComponent } from './products/products.component';
 import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
+import { ConvertToSpacesPipe } from './common/convert-to-spaces.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     ProductsComponent,
     NavComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
+    ConvertToSpacesPipe // Example of a Custom pipe
   ],
   imports: [
     BrowserModule,

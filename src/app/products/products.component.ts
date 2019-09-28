@@ -2,22 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.sass']
+  selector: 'app-products', // Custom directive
+  templateUrl: './products.component.html', // Teplate encapsulation
+  styleUrls: ['./products.component.sass'] // Css encapsulation
 })
 export class ProductsComponent implements OnInit {
+
+  constructor() {
+    this.filteredProducts = this.products;
+    this.listFilter = 'twig';
+  }
+
   pageTitle = 'Product List';
   imageWidth = 50;
   imageMargin = 2;
   showImage = false;
-  listFilter = 'twig';
 
+  // tslint:disable-next-line: variable-name -- disables checing for variable name convention break on the next line
+  _listFilter: string;
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+  }
+
+  filteredProducts: IProduct[];
+  // Example of an interface implementation
   products: IProduct[] = [
     {
       productId: 1,
       productName: 'Bin',
-      productCode: 'BIN01',
+      productCode: 'BIN-01',
       releaseDate: '21-01-2019',
       description: 'Big ol\' barrel of nothing ready to be filled with the crap you dont want anymore.',
       price: 2000.99,
@@ -27,7 +44,7 @@ export class ProductsComponent implements OnInit {
     {
       productId: 2,
       productName: 'Twig',
-      productCode: 'TWIG01',
+      productCode: 'TWIG-01',
       releaseDate: '21-01-2019',
       description: 'Big ol\' twig.',
       price: 20.99,
@@ -36,13 +53,19 @@ export class ProductsComponent implements OnInit {
     }
   ];
 
-  constructor() { }
-
-  ngOnInit() {
+  performFilter(filterBy: string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) =>
+      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
+  // Example of a method
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  // Example of a lifecycle hook
+  ngOnInit() {
   }
 
 }
