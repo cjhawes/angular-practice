@@ -3,7 +3,7 @@ import { IProduct } from './product';
 
 @Component({
   selector: 'app-products', // Custom directive
-  templateUrl: './products.component.html', // Teplate encapsulation
+  templateUrl: './products.component.html', // Template encapsulation
   styleUrls: ['./products.component.sass'] // Css encapsulation
 })
 export class ProductsComponent implements OnInit {
