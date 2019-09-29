@@ -9,6 +9,7 @@ import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConvertToSpacesPipe } from './common/convert-to-spaces.pipe';
+import { StarComponent } from './star/star.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ConvertToSpacesPipe } from './common/convert-to-spaces.pipe';
     NavComponent,
     DashboardComponent,
     FooterComponent,
-    ConvertToSpacesPipe // Example of a Custom pipe
+    ConvertToSpacesPipe,
+    StarComponent // Example of a Custom pipe
   ],
   imports: [
     BrowserModule,

@@ -28,8 +28,8 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
   }
 
+  // Examples of an interface implementation
   filteredProducts: IProduct[];
-  // Example of an interface implementation
   products: IProduct[] = [
     {
       productId: 1,
