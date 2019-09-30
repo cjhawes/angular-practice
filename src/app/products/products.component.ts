@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from '../Services/product.service';
 
 @Component({
   selector: 'app-products', // Custom directive
@@ -8,15 +9,14 @@ import { IProduct } from './product';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() {
-    this.filteredProducts = this.products;
-    this.listFilter = 'twig';
+  constructor(private productService: ProductService) {
   }
 
   pageTitle = 'Product List';
   imageWidth = 50;
   imageMargin = 2;
   showImage = false;
+  errorMessage: string;
 
   // tslint:disable-next-line: variable-name -- disables checing for variable name convention break on the next line
   _listFilter: string;
@@ -30,28 +30,7 @@ export class ProductsComponent implements OnInit {
 
   // Examples of an interface implementation
   filteredProducts: IProduct[];
-  products: IProduct[] = [
-    {
-      productId: 1,
-      productName: 'Bin',
-      productCode: 'BIN-01',
-      releaseDate: '21-01-2019',
-      description: 'Big ol\' barrel of nothing ready to be filled with the crap you dont want anymore.',
-      price: 2000.99,
-      starRating: 5,
-      imageUrl: 'assets/images/bin.png'
-    },
-    {
-      productId: 2,
-      productName: 'Twig',
-      productCode: 'TWIG-01',
-      releaseDate: '21-01-2019',
-      description: 'Big ol\' twig.',
-      price: 20.99,
-      starRating: 3.2,
-      imageUrl: 'assets/images/twig.png'
-    }
-  ];
+  products: IProduct[] = [];
 
   onRatingClicked(message: string): void {
     this.pageTitle = `Product List: ${message}`;
@@ -70,6 +49,14 @@ export class ProductsComponent implements OnInit {
 
   // Example of a lifecycle hook
   ngOnInit() {
+    this.productService.getProducts().subscribe({ // Use of a service to get from an api
+      next: products => {
+        this.products = products
+        this.filteredProducts = this.products;
+      },
+      error: err => this.errorMessage = err
+    });
+
   }
 
 }
