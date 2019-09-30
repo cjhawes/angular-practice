@@ -6,26 +6,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
-import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FooterComponent } from './footer/footer.component';
 import { ConvertToSpacesPipe } from './common/convert-to-spaces.pipe';
 import { StarComponent } from './star/star.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    NavComponent,
     DashboardComponent,
-    FooterComponent,
-    ConvertToSpacesPipe,
-    StarComponent // Example of a Custom pipe
+    ConvertToSpacesPipe, // Example of a Custom pipe
+    StarComponent,
+    ProductDetailComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     HttpClientModule
   ],
   providers: [],

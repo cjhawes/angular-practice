@@ -20,7 +20,7 @@ export class ProductService {
     );
   }
 
-  private handleError(err: HttpErrorResponse) {
+  private handleError(err: HttpErrorResponse) { // Error handling
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
       errorMessage = `An error occured: ${err.error.message}`;

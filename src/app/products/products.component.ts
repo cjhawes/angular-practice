@@ -3,7 +3,6 @@ import { IProduct } from './product';
 import { ProductService } from '../Services/product.service';
 
 @Component({
-  selector: 'app-products', // Custom directive
   templateUrl: './products.component.html', // Template encapsulation
   styleUrls: ['./products.component.sass'] // Css encapsulation
 })
@@ -50,7 +49,7 @@ export class ProductsComponent implements OnInit {
   // Example of a lifecycle hook
   ngOnInit() {
     this.productService.getProducts().subscribe({ // Use of a service to get from an api
-      next: products => {
+      next: products => {                         // Also subscription to an observable
         this.products = products
         this.filteredProducts = this.products;
       },
