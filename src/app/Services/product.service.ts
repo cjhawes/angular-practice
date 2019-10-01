@@ -11,7 +11,7 @@ import { IProduct } from '../products/product';
 export class ProductService {
   private productUrl = 'assets/api-fake/products/products.json'; // Chamge this to valid api url when wanting to use an api
 
-  constructor(private http: HttpClient){  }
+  constructor(private http: HttpClient) {  }
 
   getProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.productUrl).pipe(
