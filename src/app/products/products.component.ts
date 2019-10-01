@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   showImage = false;
   errorMessage: string;
 
-  // tslint:disable-next-line: variable-name -- disables checing for variable name convention break on the next line
+  // tslint:disable-next-line: variable-name -- disables checKing for variable name convention break on the next line
   _listFilter: string;
   get listFilter(): string {
     return this._listFilter;
@@ -50,12 +50,10 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productService.getProducts().subscribe({ // Use of a service to get from an api
       next: products => {                         // Also subscription to an observable
-        this.products = products
+        this.products = products;
         this.filteredProducts = this.products;
       },
       error: err => this.errorMessage = err
     });
-
   }
-
 }
