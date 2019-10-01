@@ -1,8 +1,32 @@
 <div class='card'>
   <div class='card-header' *ngIf='product'>
-    {{pageTitle + ': ' + product.productName}}
+    {{pageTitle + ': ' + product.productId + ': ' + product.productName}}
   </div>
 </div>
+
+<div class='card-body'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <img ngIf='showImage'
+      [src]='product.imageUrl'
+      [title]='product.productName'
+      [style.width.px]='imageWidth'
+      [style.margin.px]='imageMargin'/>
+    </div>
+    <div class='col-md-4'>
+        <p>{{product.description}}</p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-2'>
+        <app-star [rating]='product.starRating'></app-star>
+    </div>
+    <div class='col-md-4'>
+      <h3>{{product.price}}</h3>
+    </div>
+  </div>
+</div>
+
 <div class='card-footer'>
   <button class='btn btn-outline-secondary'
     (click)='onBack()'

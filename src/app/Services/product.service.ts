@@ -10,6 +10,7 @@ import { IProduct } from '../products/product';
 })
 export class ProductService {
   private productUrl = 'assets/api-fake/products/products.json'; // Chamge this to valid api url when wanting to use an api
+  private products: IProduct[];
 
   constructor(private http: HttpClient) {  }
 
@@ -18,6 +19,24 @@ export class ProductService {
       tap(data => console.log(`All: ${JSON.stringify(data)}`)),
       catchError(this.handleError)
     );
+  }
+
+  getProductById(id: number): IProduct {
+    let product: IProduct;
+
+    this.getProducts().subscribe({ // Use of a service to get from an api
+      next: products => {                         // Also subscription to an observable
+        this.products = products;
+      }
+    });
+
+    this.products.forEach((value: IProduct): void => {
+      if (value.productId === id) {
+        product = value;
+      }
+    }); // Dont use this normally -- just cba
+
+    return product;
   }
 
   private handleError(err: HttpErrorResponse) { // Error handling
